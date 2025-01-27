@@ -1,20 +1,18 @@
 "use client";
 
-import { Authenticator } from '@aws-amplify/ui-react';
-import { useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
+import { Home } from '@/app/page';
 
 export default function AuthPage() {
-  const { user, signOut } = useAuthenticator();
   const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-6">
-        <
-          Authenticator
+      <Card className="w-full p-6">
+        <Authenticator
           initialState="signIn"
           signUpAttributes={['email']}
           components={{
@@ -26,9 +24,10 @@ export default function AuthPage() {
                 </div>
               );
             },
+            
           }}
         >
-          router.push('/');
+          <Home />
         </Authenticator>
       </Card>
     </div>

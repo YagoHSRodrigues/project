@@ -18,7 +18,7 @@ interface Task {
   userId: string;
 }
 
-export default function Home() {
+export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState("");
   const [category, setCategory] = useState("personal");

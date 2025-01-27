@@ -13,7 +13,8 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6">
-        <Authenticator
+        <
+          Authenticator
           initialState="signIn"
           signUpAttributes={['email']}
           components={{

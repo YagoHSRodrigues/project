@@ -1,19 +1,9 @@
 "use client";
 
 import { Amplify } from 'aws-amplify';
-import config from '@/amplifyconfiguration.json';
+import outputs from "../amplify_outputs.json";
 
-// Configure Amplify with retry options
-Amplify.configure({
-  ...config,
-  API: {
-    ...config.API,
-    retry: {
-      maxAttempts: 3,
-      backoff: 'exponential'
-    }
-  }
-}, { ssr: true });
+Amplify.configure(outputs);
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

@@ -1,12 +1,13 @@
 "use client";
 
 import { Authenticator } from '@aws-amplify/ui-react';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react'
 import { Card } from '@/components/ui/card';
 
 export default function AuthPage() {
+  const { user, signOut } = useAuthenticator();
   const router = useRouter();
 
   return (
@@ -26,14 +27,7 @@ export default function AuthPage() {
             },
           }}
         >
-          {({ signOut, user }) => {
-            useEffect(() => {
-              if (user) {
-                router.push('/');
-              }
-            }, [user]); // Só executa quando o `user` muda
-            return null;
-          }}
+          router.push('/');
         </Authenticator>
       </Card>
     </div>

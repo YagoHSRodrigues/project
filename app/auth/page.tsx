@@ -3,6 +3,7 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react'
 import { Card } from '@/components/ui/card';
 
 export default function AuthPage() {
@@ -26,9 +27,11 @@ export default function AuthPage() {
           }}
         >
           {({ signOut, user }) => {
-            if (user) {
-              router.push('/');
-            }
+            useEffect(() => {
+              if (user) {
+                router.push('/');
+              }
+            }, [user]); // Só executa quando o `user` muda
             return null;
           }}
         </Authenticator>
